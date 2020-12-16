@@ -55,17 +55,17 @@ kA=[1E-6,5E-6,
     1E-2,1.5E-2,2E-2,3E-2,4E-2,5E-2
     ]
 d=1
-x=np.linspace(2300,1E9,ELEMENTS)
+x=np.linspace(2300,1E8,ELEMENTS)
 for k in kA:
     y=[CB(val,k,d) for val in x]
     plt.loglog(x,y,'k', linewidth=0.8)
-    plt.text(1.1E9,y[-1], "{:.0e}".format(k),horizontalalignment='left',verticalalignment='center',fontsize="9")
+    plt.text(1.1E8,y[-1], "{:.0e}".format(k),horizontalalignment='left',verticalalignment='center',fontsize="9")
 
 
 # turbulent k/D=0
 k=0
 d=1
-x=np.linspace(2300,1E9,ELEMENTS)
+x=np.linspace(2300,1E8,ELEMENTS)
 y=[CB(val,k,d) for val in x]
 plt.loglog(x,y,'r', linewidth=1.0)
 
@@ -86,10 +86,6 @@ plt.loglog(x,y,'--k', linewidth=1.0)
 
 plt.axvline(x=2300, c='green', ls='--')
 
-plt.text(2300,0.00365, r'$Re_k$', color='green',horizontalalignment='center',verticalalignment='center')
-
-    
-plt.text(2.5E9,0.02, r"Relative roughness $k/D$",horizontalalignment='center',verticalalignment='center',rotation=90)
     
 
 plt.text(0.8E3,0.05, '1', color='blue', bbox=dict(facecolor='white', boxstyle='round', edgecolor='blue'),horizontalalignment='right')
@@ -106,11 +102,18 @@ plt.text(4E7,0.04, '5', color='black', bbox=dict(facecolor='white', boxstyle='ro
 
 #plt.text(x,y, r'$\mu='+str(mean)+',\ \sigma='+str(std)+'$', fontsize=20, bbox=dict(facecolor='white'),horizontalalignment='right')
 
-plt.xlabel(r'Reynolds number $Re=\dfrac{\rho V d}{\mu}$')
-plt.ylabel(r'Friction factor $\lambda$', fontsize=15)
+plt.text(2300,0.00565, r'$Re_k$', color='green',horizontalalignment='center',verticalalignment='center')
+
+# plt.xlabel(r'Reynolds number $Re=\dfrac{\rho V d}{\mu}$')
+# plt.ylabel(r'Friction factor $\lambda$', fontsize=15)
+# plt.text(2.5E9,0.02, r"Relative roughness $k/D$",horizontalalignment='center',verticalalignment='center',rotation=90)
+
+plt.xlabel(r'Reynoldszahl $Re=\dfrac{\overline{v} D}{\nu}$')
+plt.ylabel(r'Rohrreibungsbeiwert $\lambda$', fontsize=15)
+plt.text(2.2E8,0.025, r"Relative Rauheit $k/D$",horizontalalignment='center',verticalalignment='center',rotation=90)
 
 
-ti=[0.004,0.0045,0.005,0.0055,0.006,0.0065,0.007,0.0075,0.008,0.0085,0.009,0.0095,
+ti=[0.006,0.0065,0.007,0.0075,0.008,0.0085,0.009,0.0095,
     0.01,0.011,0.012,0.013,0.014,0.015,0.016,0.017,0.018,0.019,
     0.02,0.021,0.022,0.023,0.024,0.025,0.026,0.027,0.028,0.029,
     0.03,0.031,0.032,0.033,0.034,0.035,0.036,0.037,0.038,0.039,
@@ -118,7 +121,7 @@ ti=[0.004,0.0045,0.005,0.0055,0.006,0.0065,0.007,0.0075,0.008,0.0085,0.009,0.009
     0.05,0.051,0.052,0.053,0.054,0.055,0.056,0.057,0.058,0.059,
     0.06,0.065,0.07,0.075,0.08,0.085,0.09,0.095,0.10]
 
-tiL=["0.004","","0.005","","0.006","","0.007","","0.008","","0.009","",
+tiL=["0.006","","0.007","","0.008","","0.009","",
      "0.010","","","","0.015","","","","","",
      "0.020","","","","0.025","","","","","",
      "0.030","","","","","","","","","",
@@ -133,8 +136,8 @@ plt.gca().yaxis.set_major_formatter(FormatStrFormatter('%.3f'))
 
 plt.yticks(ti,tiL)
 
-plt.ylim(0.004, 0.1)
-plt.xlim(500,1E9)
+plt.ylim(0.006, 0.1)
+plt.xlim(500,1E8)
 
 
 plt.grid(True, which='major')
